@@ -13,36 +13,47 @@
         <input type="text" id="num2">
         <br><br>
         <input type="submit" value="Click here when ready!">
-        <br>
-        <p id="output"></p>
+        <br><br>
+        <table id="output"></table>
     </form>
 
 
     <script>
         function submitnumbers(){
+            document.getElementById("output").innerHTML = " ";
             var num1 = document.getElementById("num1").value;
             var num2 = document.getElementById("num2").value;
 
-            if ((num1 < 2 || 10 < num1) || isNaN(num1) == true){
-                alert("Enter a Number between 2-10");
+            if ((num1 > 10 || num1 < 2) || isNaN(num1) == true){
+                alert("Enter a number between 2-10!");
                 return 0;
             }
-            else if((num2 < 2 || 10 < num2) || isNaN(num2) == true){
-                alert("Enter a Number between 2-10");
+            else if ((num2 > 10 || num2 < 2) || isNaN(num2) == true){
+                alert("Enter a number between 2-10!");
                 return 0;
             }
 
-            console.log("Stop unsuccessful");
+            let table = [];
 
-            var output = " ";
-            var multiply;
+            for (x=1; x<=num1; x++) {
+                let row = [];
 
-            for (x=1;x<=num2;x++){
-                output = output + x + " ";
+                for (let y = 1; y <= num2; y++) {
+                    row.push(x*y);
+                }
+
+                table.push(row);
             }
-            console.log(output);
 
-            document.getElementById("output").innerHTML = output;
+            var result = document.getElementById("output");
+        
+            for (const row of table) {
+                result.innerHTML += row.join('\t') + '<br>';
+            }
+            
+            var finalresult = result.innerHTML;
+            console.log(finalresult);
+
             return false;
         }
     </script>
