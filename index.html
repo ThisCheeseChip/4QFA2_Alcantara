@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="return submitnumbers()">
+        <p>Enter a number between 2 and 10: </p>
+        <input type="text" id="num1">
+        <span>by</span>
+        <input type="text" id="num2">
+        <br><br>
+        <input type="submit" value="Click here when ready!">
+        <br>
+        <p id="output"></p>
+    </form>
+
+
+    <script>
+        function submitnumbers(){
+            var num1 = document.getElementById("num1").value;
+            var num2 = document.getElementById("num2").value;
+
+            if ((num1 < 2 || 10 < num1) || isNaN(num1) == true){
+                alert("Enter a Number between 2-10");
+                return 0;
+            }
+            else if((num2 < 2 || 10 < num2) || isNaN(num2) == true){
+                alert("Enter a Number between 2-10");
+                return 0;
+            }
+
+            console.log("Stop unsuccessful");
+
+            var output = " ";
+            var multiply;
+
+            for (x=1;x<=num2;x++){
+                output = output + x + " ";
+            }
+            console.log(output);
+
+            document.getElementById("output").innerHTML = output;
+            return false;
+        }
+    </script>
+</body>
+</html>
